@@ -1,28 +1,25 @@
 import { useState } from 'react';
+import './navbar.css';
 
 function Navbar() {
     const [display, setDisplay] = useState(true);
 
-    function showNavbar() {
-        return(
-        <div>
-            <button>Promos</button>
-            <button>Sucursales</button>
-            <button>Menú</button>
-            <button>Sobre nosotros</button>
-        </div>
-        )
-    }
-
     return(
         <>
-        <button onClick={() => {setDisplay(!display); showNavbar(!display)}}>
+        <button onClick={() => {setDisplay(!display); showNavbar(!display)}} className="burger">
             { display ? "X" : "三" }
         </button>
-        { display && showNavbar() }
-        </>
-    )
 
+        { display && (
+            <nav className="navbar">
+                <button>Promos</button>
+                <button>Sucursales</button>
+                <button>Menú</button>
+                <button>Sobre nosotros</button>
+            </nav>
+        )}
+        </>
+    );
 }
 
 export default Navbar;
