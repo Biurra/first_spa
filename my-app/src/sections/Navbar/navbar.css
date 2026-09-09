@@ -1,17 +1,46 @@
 @import 'tailwindcss';
+@media (orientation: landscape) {
 
-.navbar {
+    .navbar {
     @apply flex items-center gap-10;
     @apply px-[30px] py-[15px];
     @apply bg-[#4A2581];
-}
+    }
 
-.navbar button {
+
+    .navbar button {
     @apply text-white;
     @apply font-mono;
     @apply text-base;
+    }
 }
 
-.burger {
+@media (orientation: portrait) {
+
+    .navbar {
+    @apply flex items-start gap-10;
+    @apply flex-col;
+    @apply px-[30px] py-[15px];
+    @apply bg-[#4A2581];
+    }
+
+    .navbar button {
+    @apply text-white;
+    @apply font-mono;
+    @apply text-base;
+    }
+
+    .burger {
+    @apply flex items-center gap-2;
+    @apply ml-auto;
     @apply text-xl;
+    @apply px-[7px] py-[7px];
+    @apply bg-[#4A2581];
+    @apply text-white;
+    }
+
+    .burger button {
+    @apply justify-items-end;
+    }
+
 }
