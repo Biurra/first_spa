@@ -1,0 +1,14 @@
+@import 'tailwindcss';
+
+.footer {
+    @apply bg-[#351954];
+    @apply grid grid-cols-2;
+    @apply gap-x-0.5;
+    @apply gap-y-0.5;
+}
+
+.footer button {
+    @apply text-white;
+    @apply font-mono;
+    @apply text-base;
+}

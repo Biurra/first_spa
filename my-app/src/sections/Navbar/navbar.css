@@ -7,11 +7,14 @@
     @apply bg-[#4A2581];
     }
 
-
     .navbar button {
     @apply text-white;
     @apply font-mono;
     @apply text-base;
+    }
+
+    .burger {
+    @apply hidden;
     }
 }
 

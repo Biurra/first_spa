@@ -24,10 +24,18 @@ function Navbar() {
             
         { display && (
             <>
-            <button>Promos</button>
-            <button>Sucursales</button>
-            <button>Menú</button>
-            <button>Sobre nosotros</button>
+            <button onClick={() => window.location.href = "/promos"}>
+                Promos
+            </button>
+            <button onClick={() => window.location.href = "/sucursales"}>
+                Sucursales
+            </button>
+            <button onClick={() => window.location.href = "/menu"}>
+                Menú
+            </button>
+            <button onClick={() => document.getElementById("footer").scrollIntoView}>
+                Sobre nosotros
+            </button>
             </>
         )}
 

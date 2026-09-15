@@ -1,0 +1,8 @@
+@import 'tailwindcss';
+
+.body {
+    @apply bg-[#6E5E85]
+}
+
+.kaguya {
+}

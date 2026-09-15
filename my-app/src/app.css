@@ -1,0 +1,9 @@
+@import 'tailwindcss';
+
+.page {
+    @apply min-h-screen flex flex-col;
+}
+
+main {
+    @apply flex-1;
+}
