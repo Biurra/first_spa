@@ -6,7 +6,7 @@ function Body() {
 
     return(
         <>
-        <div className="body">
+        <div className="pagebody">
             <h1>body</h1>
             <div className="kaguya">
                 <img src={kaguyadance} alt="kaguyita"></img>

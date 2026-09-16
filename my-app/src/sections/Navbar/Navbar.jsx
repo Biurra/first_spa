@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './navbar.css';
+import '../Footer/footer.css';
 
 function Navbar() {
     const [display, setDisplay] = useState(true);
@@ -33,7 +34,7 @@ function Navbar() {
             <button onClick={() => window.location.href = "/menu"}>
                 Menú
             </button>
-            <button onClick={() => document.getElementById("footer").scrollIntoView}>
+            <button onClick={() => document.getElementById("footer").scrollIntoView()}>
                 Sobre nosotros
             </button>
             </>

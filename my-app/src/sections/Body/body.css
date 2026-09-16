@@ -1,8 +1,13 @@
 @import 'tailwindcss';
 
-.body {
-    @apply bg-[#6E5E85]
+.pagebody {
+    @apply bg-[#6E5E85];
+    @apply flex flex-col;
+    @apply items-center;
+    @apply justify-center;
+    @apply min-h-screen;
 }
 
 .kaguya {
+    @apply justify-center;
 }
