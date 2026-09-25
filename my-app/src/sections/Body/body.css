@@ -8,6 +8,164 @@
     @apply min-h-screen;
 }
 
-.kaguya {
+.elements {
+    @apply flex;
+    @apply items-center;
     @apply justify-center;
+    @apply gap-5;
+}
+
+.sideframes {
+    @apply flex flex-col;
+    @apply gap-4;
+}
+
+.album-wrapper {
+    @apply relative;
+    @apply w-[40rem];
+    @apply z-[1];
+    @apply transition-transform;
+    @apply duration-300;
+    @apply ease-in-out;
+}
+
+.album-wrapper:hover {
+    @apply z-[30];
+    @apply scale-[1.08];
+}
+
+.album-frame {
+    @apply relative;
+    @apply w-full h-[20rem];
+    @apply rounded-2xl;
+    @apply overflow-hidden;
+    @apply bg-black;
+}
+
+.album-wrapper:hover .album-frame {
+    @apply rounded-t-2xl;
+    @apply rounded-b-none;
+    @apply shadow-[0_20px_50px_rgba(0,0,0,0.5)];
+}
+
+.album-frame > img {
+    @apply block;
+    @apply w-full h-full;
+    @apply object-cover;
+}
+
+.pagebody::after {
+    content: '';
+    @apply fixed;
+    @apply inset-0;
+    @apply z-[10];
+    @apply bg-transparent;
+    @apply pointer-events-none;
+    @apply transition-colors;
+    @apply duration-300;
+    @apply ease-in-out;
+}
+
+.pagebody:has(.album-wrapper:hover)::after {
+    @apply bg-black/55;
+}
+
+.album-lid {
+    @apply w-full;
+    @apply px-5 py-4;
+    @apply bg-[rgba(20,15,25,0.92)];
+    @apply backdrop-blur-md;
+    @apply text-white;
+    @apply opacity-0;
+    @apply max-h-0;
+    @apply overflow-hidden;
+    @apply transition-all;
+    @apply duration-300;
+    @apply ease-in-out;
+}
+
+.album-wrapper:hover .album-lid {
+    @apply opacity-100;
+    @apply max-h-[200px];
+    @apply rounded-b-2xl;
+}
+
+.album-info h3 {
+    @apply m-0;
+    @apply font-serif;
+    @apply text-xl;
+}
+
+.album-info p {
+    @apply mt-[0.2rem];
+    @apply mb-0;
+    @apply opacity-70;
+}
+
+.album-controls {
+    @apply flex;
+    @apply items-center;
+    @apply gap-3;
+    @apply mt-3;
+}
+
+.album-controls button {
+    @apply border-0;
+    @apply bg-transparent;
+    @apply text-white;
+    @apply cursor-pointer;
+    @apply text-lg;
+    @apply p-1;
+}
+
+.progress {
+    @apply flex-1;
+    @apply cursor-pointer;
+}
+
+.volume-control {
+    @apply relative;
+    @apply flex;
+    @apply items-center;
+    @apply shrink-0;
+}
+
+.volume-slider {
+    @apply absolute;
+    @apply right-0;
+    @apply bottom-full;
+    @apply w-[2.5rem];
+    @apply h-[8rem];
+    @apply p-2;
+    @apply bg-[rgba(20,15,25,0.95)];
+    @apply rounded-lg;
+    @apply opacity-0;
+    @apply pointer-events-none;
+    @apply translate-y-[5px];
+    @apply transition-all;
+    @apply duration-200;
+    @apply ease-in-out;
+}
+
+.volume-slider input {
+    @apply absolute;
+    @apply -rotate-90;
+    @apply left-0.5;
+    @apply top-0.5;
+    @apply -translate-x-1/2;
+    @apply -translate-y-1/2;
+    @apply w-[7rem];
+    @apply origin-center;
+}
+
+.volume-control:hover .volume-slider {
+    @apply opacity-100;
+    @apply pointer-events-auto;
+    @apply translate-y-0;
+}
+
+.kaguya {
+    @apply flex;
+    @apply justify-center;
+    @apply items-center;
 }
