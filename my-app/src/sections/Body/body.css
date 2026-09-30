@@ -6,6 +6,7 @@
     @apply items-center;
     @apply justify-center;
     @apply min-h-screen;
+    @apply gap-[7rem];
 }
 
 .elements {
@@ -168,4 +169,16 @@
     @apply flex;
     @apply justify-center;
     @apply items-center;
+}
+
+.playlist-card-content {
+    @apply flex;
+    @apply grid-cols-3;
+    @apply gap-[3rem];
+}
+
+.playlist-info {
+    @apply flex;
+    @apply row-auto;
+    @apply gap-[3rem];
 }

@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 
-function AlbumFrame({ artist, title, cover, sample }) {
+function AlbumFrame({ artist, title, cover, sample, titleLink, artistLink }) {
     const [hovered, setHovered] = useState(false);
     const [playing, setPlaying] = useState(false);
     const [muted, setMuted] = useState(false);
@@ -126,8 +126,16 @@ function AlbumFrame({ artist, title, cover, sample }) {
                 <div className="album-lid-content">
 
                 <div className="album-info">
-                    <h3>{title}</h3>
-                    <p>{artist}</p>
+                    <h3>
+                        <a href={titleLink} target="_blank" rel="noopener noreferrer">
+                            {title}
+                        </a>
+                    </h3>
+                    <p>
+                        <a href={artistLink} target="_blank" rel="noopener noreferrer">
+                            {artist}
+                        </a>
+                    </p>
                 </div>
 
                 <div className="album-controls">
