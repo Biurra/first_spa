@@ -5,12 +5,18 @@ import AlbumFrame from '../../components/albumFrames/albumFrames.jsx';
 import Playlist from '../../components/playlists/Playlists.jsx';
 import assets from '../../components/utils/imgFetching.jsx';
 import samples from '../../components/utils/mp3Fetching.jsx';
+import blackchancery from '../../assets/fonts/BLKCHCRY.ttf';
+import AddNewPlaylist from '../../components/playlists/AddNewPlaylist.jsx';
 
 function Body() {
 
     return(
         <>
         <div className="pagebody">
+
+            <div className="divider">
+                <span></span>
+            </div>
 
             <div className="divider">
                 <span>—— The Big Four ——</span>
@@ -63,18 +69,28 @@ function Body() {
             </div>
 
             <div className="divider">
-                <span>—— Your lists ——</span>
+                <span>—— + Your lists + ——</span>
             </div>
 
             <div className="playlists">
+                
+                <div className="addNewPlaylist">
+                    <AddNewPlaylist />
+                </div>
+
                 <Playlist 
                     name="Drop B"
-                    songs={songCounter}
+                    songs={17}
                     cover={assets['pity.webp']}
-                    playlistLink="https://www.google.com"
+                    playlistLink={`https://www.google.com`}
                 />
 
             </div>
+
+            <div className="divider">
+                <span></span>
+            </div>
+
         </div>
         </>
     )
