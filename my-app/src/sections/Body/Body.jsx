@@ -45,7 +45,7 @@ function Body() {
                     <span></span>
                 </div>
 
-                <div className="divider">
+                <div className="divider" id="bigfour">
                     <span>—— The Big Four ——</span>
                 </div>
 
@@ -99,7 +99,7 @@ function Body() {
                     <span>—— + Your lists + ——</span>
                 </div>
 
-                <div className="playlist">
+                <div className="playlist" id="playlist">
 
                     <div className="addNewPlaylist">
                         <AddNewPlaylist onCreated={fetchPlaylists} />

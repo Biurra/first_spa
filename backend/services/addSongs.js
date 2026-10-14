@@ -34,7 +34,7 @@ export async function addSongs(link, songInfo, playlist) {
 export async function addSongToPlaylist(song, playlist) {
     const { data: playlistData, error: playlistError } = await supabase
         .from('playlists')
-        .select('id')
+        .select('id, thumbnail')
         .eq('playlistname', playlist)
         .single()
     if (playlistError) {
@@ -53,9 +53,8 @@ export async function addSongToPlaylist(song, playlist) {
         throw positionsError;
     }
 
-    const position = positions.length > 0
-        ? positions[0].position + 1
-        : 1;
+    const isFirstSong = positions.length === 0;
+    const position = isFirstSong ? 1 : positions[0].position + 1;
 
     const { data: existing, error: existingError } = await supabase
         .from('playlist_songs')
@@ -85,7 +84,7 @@ export async function addSongToPlaylist(song, playlist) {
         throw error;
     }
 
-    if (position === 1 && song.thumbnail) {
+    if (isFirstSong && song.thumbnail) {
         const { error: thumbError } = await supabase
             .from('playlists')
             .update({ thumbnail: song.thumbnail })

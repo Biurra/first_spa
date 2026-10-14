@@ -83,114 +83,130 @@ export default function PlaylistPage() {
     if (!playlist) return <p className="page-status">Playlist not found.</p>;
 
     return (
-        <div className="playlist-page">
-            <Link to="/" className="back-link">← Back</Link>
-            <header className="playlist-hero">
-                {playlist.thumbnail
-                    ? <img src={playlist.thumbnail} alt={playlist.playlistname} className="playlist-hero-thumb" />
-                    : <div className="playlist-hero-thumb playlist-hero-thumb--empty" />
-                }
-                <div className="playlist-hero-info">
-                    <h1 className="playlist-hero-title">{playlist.playlistname}</h1>
-                    <p className="playlist-hero-count">{songs.length} song{songs.length !== 1 ? 's' : ''}</p>
-                    <div className="playlist-hero-actions">
-                        <AddNewSong playlist={playlist.playlistname} onCreated={fetchData} />
-                        <button className="delete-btn" onClick={handleDeletePlaylist} title="Delete playlist">
-                            🗑️
-                        </button>
+        <div className="playlist-page-bg">
+            <div className="playlist-page">
+                <Link to="/" className="back-link">← Back</Link>
+                <header className="playlist-hero">
+                    {playlist.thumbnail
+                        ? <img src={playlist.thumbnail} alt={playlist.playlistname} className="playlist-hero-thumb" />
+                        : <div className="playlist-hero-thumb playlist-hero-thumb--empty" />
+                    }
+                    <div className="playlist-hero-info">
+                        <h1 className="playlist-hero-title">{playlist.playlistname}</h1>
+                        <p className="playlist-hero-count">{songs.length} song{songs.length !== 1 ? 's' : ''}</p>
+                        <div className="playlist-hero-actions">
+                            <AddNewSong playlist={playlist.playlistname} onCreated={fetchData} />
+                            <button className="delete-btn" onClick={handleDeletePlaylist} title="Delete playlist">
+                                🗑️
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </header>
+                </header>
 
-            {songs.length === 0 && (
-                <p className="empty-msg">No songs yet. Add one above!</p>
-            )}
+                {songs.length === 0 && (
+                    <p className="empty-msg">No songs yet. Add one above!</p>
+                )}
 
-            {songs.length > 0 && (
-                <table className="song-table">
-                    <thead>
-                        <tr className="song-table-head">
-                            <th>#</th>
-                            <th className="col-title">Title</th>
-                            <th className="col-artist">Artist</th>
-                            <th className="col-icon" title="Favorite">♡</th>
-                            <th className="col-icon" title="Must practice">✓</th>
-                            <th className="col-icon"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {songs.map((song, index) => (
-                            <tr key={song.id} className="song-row">
+                {songs.length > 0 && (
+                    <table className="song-table">
+                        <thead>
+                            <tr className="song-table-head">
+                                <th>#</th>
+                                <th></th>
+                                <th className="col-title">Title</th>
+                                <th className="col-artist">Artist</th>
+                                <th className="col-icon" title="Favorite">Favorite</th>
+                                <th className="col-icon" title="Must practice">Done</th>
+                                <th className="col-icon" title="Practice on Songsterr">Practice</th>
+                                <th className="col-icon"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {songs.map((song, index) => (
+                                <tr key={song.id} className="song-row">
 
-                                <td className="col-index">{index + 1}</td>
+                                    <td className="col-index">{index + 1}</td>
 
-                                <td className="col-thumb">
-                                    {song.thumbnail && (
-                                        <img src={song.thumbnail} alt={song.name} className="song-thumb" />
-                                    )}
-                                </td>
+                                    <td className="col-thumb">
+                                        {song.thumbnail && (
+                                            <img src={song.thumbnail} alt={song.name} className="song-thumb" />
+                                        )}
+                                    </td>
 
-                                <td className="col-title">
-                                    <a
-                                        href={song.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="song-name-link"
-                                    >
-                                        {song.name}
-                                    </a>
-                                </td>
-
-                                <td className="col-artist">
-                                    {song.artist
-                                        ? <a
-                                            href={artistLink(song.artist)}
+                                    <td className="col-title">
+                                        <a
+                                            href={song.link}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="song-artist-link"
+                                            className="song-name-link"
                                         >
-                                            {song.artist}
+                                            {song.name}
                                         </a>
-                                        : <span className="song-artist-empty">—</span>
-                                    }
-                                </td>
+                                    </td>
 
-                                <td className="col-icon">
-                                    <button
-                                        className={`icon-btn heart-btn ${song.favorite ? 'active' : ''}`}
-                                        onClick={() => handleToggle(song, 'favorite')}
-                                        title="Favorite"
-                                    >
-                                        {song.favorite ? '♥' : '♡'}
-                                    </button>
-                                </td>
+                                    <td className="col-artist">
+                                        {song.artist
+                                            ? <a
+                                                href={artistLink(song.artist)}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="song-artist-link"
+                                            >
+                                                {song.artist}
+                                            </a>
+                                            : <span className="song-artist-empty">—</span>
+                                        }
+                                    </td>
 
-                                <td className="col-icon">
-                                    <input
-                                        type="checkbox"
-                                        className="practice-checkbox"
-                                        checked={!!song.must_practice}
-                                        onChange={() => handleToggle(song, 'must_practice')}
-                                        title="Must practice"
-                                    />
-                                </td>
+                                    <td className="col-icon">
+                                        <button
+                                            className={`icon-btn heart-btn ${song.favorite ? 'active' : ''}`}
+                                            onClick={() => handleToggle(song, 'favorite')}
+                                            title="Favorite"
+                                        >
+                                            {song.favorite ? '♥' : '♡'}
+                                        </button>
+                                    </td>
 
-                                <td className="col-icon">
-                                    <button
-                                        className="icon-btn delete-btn"
-                                        onClick={() => handleDeleteSong(song.id)}
-                                        title="Remove from playlist"
-                                    >
-                                        🗑️
-                                    </button>
-                                </td>
+                                    <td className="col-icon">
+                                        <input
+                                            type="checkbox"
+                                            className="practice-checkbox"
+                                            checked={!!song.must_practice}
+                                            onChange={() => handleToggle(song, 'must_practice')}
+                                            title="Must practice"
+                                        />
+                                    </td>
 
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            )}
+                                    <td className="col-icon">
+                                        <a
+                                            href={`https://www.songsterr.com/?pattern=${encodeURIComponent(song.name)}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="icon-btn practice-link"
+                                            title={`Practice "${song.name}" on Songsterr`}
+                                        >
+                                            P
+                                        </a>
+                                    </td>
 
+                                    <td className="col-icon">
+                                        <button
+                                            className="icon-btn delete-btn"
+                                            onClick={() => handleDeleteSong(song.id)}
+                                            title="Remove from playlist"
+                                        >
+                                            🗑️
+                                        </button>
+                                    </td>
+
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                )}
+
+            </div>
         </div>
     );
 }

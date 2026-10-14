@@ -1,31 +1,42 @@
-.playlist-page {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem 4rem;
-    font-family: 'Inter', sans-serif;
-    color: #e8e8e8;
+﻿/* ── Page background ──────────────────────────────────── */
+.playlist-page-bg {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #1a1028 0%, #2d1f45 40%, #1e2a3a 100%);
 }
 
+/* ── Page container ───────────────────────────────────── */
+.playlist-page {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 5rem;
+    font-family: 'Inter', sans-serif;
+    color: #e8e8f0;
+}
+
+/* ── Back link ────────────────────────────────────────── */
 .back-link {
-    display: inline-block;
-    margin-bottom: 1.5rem;
-    color: #a0a0b0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.35);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
     transition: color 0.2s;
 }
+.back-link:hover { color: rgba(255, 255, 255, 0.85); }
 
-.back-link:hover {
-    color: #ffffff;
-}
-
+/* ── Status messages ──────────────────────────────────── */
 .page-status {
     text-align: center;
-    margin-top: 4rem;
-    color: #888;
+    margin-top: 5rem;
+    color: rgba(255, 255, 255, 0.4);
     font-size: 1rem;
 }
 
+/* ── Hero section ─────────────────────────────────────── */
 .playlist-hero {
     display: flex;
     align-items: flex-end;
@@ -39,117 +50,164 @@
     width: 180px;
     height: 180px;
     object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255,255,255,0.06);
     flex-shrink: 0;
 }
 
 .playlist-hero-thumb--empty {
-    background: linear-gradient(135deg, #2a2a3e, #1a1a2e);
-    border-radius: 10px;
+    background: linear-gradient(135deg, #2a1f3d, #1a2a3a);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .playlist-hero-info {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.35rem;
+    min-width: 0;
 }
 
 .playlist-hero-title {
-    font-size: 2.2rem;
-    font-weight: 700;
+    font-size: 2.4rem;
+    font-weight: 800;
     margin: 0;
     line-height: 1.1;
+    background: linear-gradient(135deg, #fff 40%, #c4b5fd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.02em;
 }
 
 .playlist-hero-count {
-    font-size: 0.95rem;
-    color: #9090a8;
-    margin: 0 0 0.8rem;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.35);
+    margin: 0 0 0.5rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .playlist-hero-actions {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    margin-top: 0.5rem;
+    gap: 0.6rem;
+    margin-top: 0.25rem;
+    flex-wrap: wrap;
 }
 
+/* ── Add Song button ──────────────────────────────────── */
+.playlist-hero-actions > button:first-child {
+    background: linear-gradient(135deg, #7c3aed, #5b21b6);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1.1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.12s, box-shadow 0.15s;
+    box-shadow: 0 4px 16px rgba(124, 58, 237, 0.4);
+    white-space: nowrap;
+}
+.playlist-hero-actions > button:first-child:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 22px rgba(124, 58, 237, 0.55);
+}
+
+/* ── Delete playlist button ───────────────────────────── */
+.playlist-hero-actions .delete-btn {
+    background: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.22);
+    border-radius: 8px;
+    color: rgba(239, 68, 68, 0.65);
+    font-size: 1rem;
+    padding: 0.45rem 0.7rem;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.12s;
+    line-height: 1;
+}
+.playlist-hero-actions .delete-btn:hover {
+    background: rgba(239, 68, 68, 0.18);
+    border-color: rgba(239, 68, 68, 0.5);
+    color: #ef4444;
+    transform: translateY(-1px);
+}
+
+/* ── Empty message ────────────────────────────────────── */
 .empty-msg {
     text-align: center;
-    color: #666;
+    color: rgba(255, 255, 255, 0.3);
     margin-top: 3rem;
     font-size: 0.95rem;
+    font-style: italic;
 }
 
+/* ── Song table ───────────────────────────────────────── */
 .song-table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0 2px;
 }
 
 .song-table-head th {
-    padding: 0.4rem 0.75rem;
+    padding: 0.5rem 0.75rem;
     text-align: left;
-    font-size: 0.75rem;
-    font-weight: 600;
+    font-size: 0.68rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.07em;
-    color: #6a6a80;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.28);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
     white-space: nowrap;
 }
 
-.song-row {
-    border-radius: 8px;
-    transition: background 0.15s;
-}
-
-.song-row:hover {
-    background: rgba(255, 255, 255, 0.04);
-}
-
 .song-row td {
-    padding: 0.6rem 0.75rem;
+    padding: 0.55rem 0.75rem;
     vertical-align: middle;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.025);
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.035);
+    transition: background 0.15s, border-color 0.15s;
+}
+.song-row td:first-child { border-radius: 8px 0 0 8px; }
+.song-row td:last-child  { border-radius: 0 8px 8px 0; }
+.song-row:hover td {
+    background: rgba(167, 139, 250, 0.06);
+    border-color: rgba(167, 139, 250, 0.09);
 }
 
+/* ── Table columns ────────────────────────────────────── */
 .col-index {
-    color: #555;
-    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.22);
+    font-size: 0.78rem;
     width: 2rem;
     text-align: right;
+    font-variant-numeric: tabular-nums;
 }
+.col-thumb  { width: 52px; min-width: 52px; overflow: hidden; }
+.col-title  { max-width: 260px; }
+.col-artist { max-width: 160px; }
+.col-icon   { width: 3.2rem; text-align: center; white-space: nowrap; }
 
-.col-thumb {
-    width: 48px;
-}
-
-.col-title {
-    max-width: 260px;
-}
-
-.col-artist {
-    max-width: 160px;
-}
-
-.col-icon {
-    width: 2.5rem;
-    text-align: center;
-}
-
+/* ── Song thumbnail ───────────────────────────────────── */
 .song-thumb {
-    width: 42px;
-    height: 42px;
+    width: 42px; height: 42px;
+    min-width: 42px; min-height: 42px;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
-    border-radius: 5px;
+    border-radius: 6px;
     display: block;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.45);
 }
 
+/* ── Song title / artist links ────────────────────────── */
 .song-name-link {
-    color: #e8e8e8;
+    color: #e8e8f0;
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     font-weight: 500;
     display: block;
     overflow: hidden;
@@ -157,75 +215,212 @@
     white-space: nowrap;
     transition: color 0.15s;
 }
-
-.song-name-link:hover {
-    color: #a78bfa;
-}
+.song-name-link:hover { color: #c4b5fd; }
 
 .song-artist-link {
-    color: #9090a8;
+    color: rgba(255, 255, 255, 0.45);
     text-decoration: none;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     display: block;
     transition: color 0.15s;
 }
-
-.song-artist-link:hover {
-    color: #c4b5fd;
-}
+.song-artist-link:hover { color: #a78bfa; }
 
 .song-artist-empty {
-    color: #444;
+    color: rgba(255, 255, 255, 0.18);
     font-size: 0.85rem;
 }
 
+/* ── Icon buttons (base) ──────────────────────────────── */
 .icon-btn {
-    background: none;
-    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 1.1rem;
-    padding: 0.25rem;
-    border-radius: 4px;
-    opacity: 0.5;
-    transition: opacity 0.15s, transform 0.1s;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.45);
+    text-decoration: none;
+    transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.1s, box-shadow 0.15s;
     line-height: 1;
 }
-
 .icon-btn:hover {
-    opacity: 1;
-    transform: scale(1.15);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
 }
 
+/* ── Heart / Favorite button ──────────────────────────── */
 .heart-btn {
-    color: #e06c75;
+    color: rgba(224, 108, 117, 0.5);
+    border-color: rgba(224, 108, 117, 0.15);
+    background: rgba(224, 108, 117, 0.04);
 }
-
+.heart-btn:hover {
+    background: rgba(224, 108, 117, 0.12) !important;
+    border-color: rgba(224, 108, 117, 0.4) !important;
+    color: #e06c75 !important;
+    box-shadow: 0 0 10px rgba(224, 108, 117, 0.2);
+}
 .heart-btn.active {
-    opacity: 1;
+    color: #e06c75;
+    background: rgba(224, 108, 117, 0.14);
+    border-color: rgba(224, 108, 117, 0.38);
+    box-shadow: 0 0 8px rgba(224, 108, 117, 0.2);
 }
 
+/* ── Done / Practice checkbox ─────────────────────────── */
 .practice-checkbox {
-    width: 15px;
-    height: 15px;
+    width: 16px;
+    height: 16px;
     cursor: pointer;
     accent-color: #a78bfa;
 }
 
-.delete-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    padding: 0.25rem;
-    border-radius: 4px;
-    opacity: 0.35;
-    transition: opacity 0.15s, transform 0.1s;
+/* ── Practice (Songsterr) link button ─────────────────── */
+.practice-link {
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    color: #a78bfa !important;
+    border-color: rgba(167, 139, 250, 0.22) !important;
+    background: rgba(167, 139, 250, 0.07) !important;
+    letter-spacing: 0.05em;
+}
+.practice-link:hover {
+    background: rgba(167, 139, 250, 0.16) !important;
+    border-color: rgba(167, 139, 250, 0.45) !important;
+    color: #c4b5fd !important;
+    box-shadow: 0 0 12px rgba(167, 139, 250, 0.25) !important;
+    transform: scale(1.1);
 }
 
-.delete-btn:hover {
-    opacity: 1;
-    transform: scale(1.15);
+/* ── Row delete button ────────────────────────────────── */
+.icon-btn.delete-btn {
+    font-size: 0.88rem;
+    color: rgba(239, 68, 68, 0.38);
+    border-color: rgba(239, 68, 68, 0.1);
+    background: rgba(239, 68, 68, 0.04);
+}
+.icon-btn.delete-btn:hover {
+    background: rgba(239, 68, 68, 0.12) !important;
+    border-color: rgba(239, 68, 68, 0.38) !important;
+    color: #ef4444 !important;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.2);
+    transform: scale(1.1);
+}
+
+/* ── Add Song popup overlay ───────────────────────────── */
+.song-popup {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+    animation: fadeIn 0.15s ease;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.97); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Add Song popup card ───────────────────────────────── */
+.song-popup-card {
+    background: linear-gradient(145deg, #1e1535, #16213e);
+    border: 1px solid rgba(167, 139, 250, 0.18);
+    border-radius: 14px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    animation: popIn 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: scale(0.92) translateY(8px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.song-popup-card h2 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #e8e8f0;
+    letter-spacing: -0.01em;
+}
+
+.song-popup-card input[type="url"] {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 0.65rem 0.9rem;
+    color: #e8e8f0;
+    font-size: 0.88rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    box-sizing: border-box;
+}
+
+.song-popup-card input[type="url"]:focus {
+    border-color: rgba(167, 139, 250, 0.5);
+    box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.12);
+}
+
+.song-popup-card input[type="url"]::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.song-popup-actions {
+    display: flex;
+    gap: 0.6rem;
+    justify-content: flex-end;
+    margin-top: 0.25rem;
+}
+
+.popup-btn {
+    border: none;
+    border-radius: 7px;
+    padding: 0.5rem 1.1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s;
+    font-family: 'Inter', sans-serif;
+}
+
+.popup-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.popup-btn--cancel {
+    background: rgba(255, 255, 255, 0.07);
+    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.popup-btn--cancel:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+}
+
+.popup-btn--add {
+    background: linear-gradient(135deg, #7c3aed, #5b21b6);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(124, 58, 237, 0.4);
+}
+.popup-btn--add:hover:not(:disabled) {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.55);
 }

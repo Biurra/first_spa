@@ -17,33 +17,33 @@ function Navbar() {
         return () => {
             mediaQuery.removeEventListener("change", orientationChange);
         };
-    }, []); 
+    }, []);
 
-    return(
+    return (
         <>
-        <nav className="navbar">
-            
-        { display && (
-            <>
-            <button onClick={() => window.location.href = "/promos"}>
-                Promos
-            </button>
-            <button onClick={() => window.location.href = "/sucursales"}>
-                Sucursales
-            </button>
-            <button onClick={() => window.location.href = "/menu"}>
-                Menú
-            </button>
-            <button onClick={() => document.getElementById("footer").scrollIntoView()}>
-                Sobre nosotros
-            </button>
-            </>
-        )}
+            <nav className="navbar">
 
-        <button onClick={() => {setDisplay(!display)}} className="burger">
-        { display && !landscape ? " X " : "三" }
-        </button>                        
-        </nav>
+                {display && (
+                    <>
+                        <button onClick={() => window.open("https://github.com/biurra", "_blank")}>
+                            Github
+                        </button>
+                        <button onClick={() => document.getElementById("playlist").scrollIntoView()}>
+                            Playlists
+                        </button>
+                        <button onClick={() => document.getElementById("bigfour").scrollIntoView()}>
+                            The Big Four
+                        </button>
+                        <button onClick={() => document.getElementById("footer").scrollIntoView()}>
+                            About
+                        </button>
+                    </>
+                )}
+
+                <button onClick={() => { setDisplay(!display) }} className="burger">
+                    {display && !landscape ? " X " : "三"}
+                </button>
+            </nav>
         </>
     );
 }

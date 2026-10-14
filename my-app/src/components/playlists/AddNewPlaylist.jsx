@@ -51,30 +51,34 @@ function AddNewPlaylist({ onCreated }) {
             </button>
 
             {popUp && (
-                <div className="playlist-popup">
-                    <h2>Create Playlist</h2>
+                <div className="playlist-popup" onClick={handleCancel}>
+                    <div className="playlist-popup-card" onClick={e => e.stopPropagation()}>
+                        <h2>Create Playlist</h2>
 
-                    <input
-                        type="text"
-                        placeholder="Playlist name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        disabled={loading}
-                    />
+                        <input
+                            type="text"
+                            placeholder="Playlist name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            onKeyDown={(e) => e.key === 'Enter' && handleCreate()}
+                            disabled={loading}
+                        />
 
-                    {error && (
-                        <p style={{ color: 'red', fontSize: '0.85rem', margin: '4px 0' }}>
-                            ⚠ {error}
-                        </p>
-                    )}
+                        {error && (
+                            <p style={{ color: '#f87171', fontSize: '0.82rem', margin: '4px 0' }}>
+                                ⚠ {error}
+                            </p>
+                        )}
 
-                    <button onClick={handleCancel} disabled={loading}>
-                        Cancel
-                    </button>
-
-                    <button onClick={handleCreate} disabled={loading || !name.trim()}>
-                        {loading ? 'Creating…' : 'Create'}
-                    </button>
+                        <div className="playlist-popup-actions">
+                            <button className="popup-btn popup-btn--cancel" onClick={handleCancel} disabled={loading}>
+                                Cancel
+                            </button>
+                            <button className="popup-btn popup-btn--add" onClick={handleCreate} disabled={loading || !name.trim()}>
+                                {loading ? 'Creating…' : 'Create'}
+                            </button>
+                        </div>
+                    </div>
                 </div>
             )}
         </>

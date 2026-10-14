@@ -14,9 +14,10 @@ function Playlist({ id, name, songs, cover, onDelete }) {
             <button
                 className="delete-btn"
                 title="Delete playlist"
-                onClick={(e) => {
-                    e.preventDefault(); // stop the Link from navigating
-                    onDelete && onDelete();
+                onClick={async (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    onDelete && await onDelete();
                 }}
             >
                 🗑️

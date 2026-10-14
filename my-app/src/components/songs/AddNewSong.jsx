@@ -51,30 +51,33 @@ function AddNewSong({ playlist, onCreated }) {
             </button>
 
             {popUp && (
-                <div className="song-popup">
-                    <h2>Add Song</h2>
+                <div className="song-popup" onClick={handleCancel}>
+                    <div className="song-popup-card" onClick={e => e.stopPropagation()}>
+                        <h2>Add Song</h2>
 
-                    <input
-                        type="url"
-                        placeholder="Paste a YouTube Music link…"
-                        value={link}
-                        onChange={(e) => setLink(e.target.value)}
-                        disabled={loading}
-                    />
+                        <input
+                            type="url"
+                            placeholder="Paste a YouTube Music link…"
+                            value={link}
+                            onChange={(e) => setLink(e.target.value)}
+                            disabled={loading}
+                        />
 
-                    {error && (
-                        <p style={{ color: 'red', fontSize: '0.85rem', margin: '4px 0' }}>
-                            ⚠ {error}
-                        </p>
-                    )}
+                        {error && (
+                            <p style={{ color: '#f87171', fontSize: '0.82rem', margin: '4px 0' }}>
+                                ⚠ {error}
+                            </p>
+                        )}
 
-                    <button onClick={handleCancel} disabled={loading}>
-                        Cancel
-                    </button>
-
-                    <button onClick={handleAdd} disabled={loading || !link.trim()}>
-                        {loading ? 'Adding…' : 'Add'}
-                    </button>
+                        <div className="song-popup-actions">
+                            <button className="popup-btn popup-btn--cancel" onClick={handleCancel} disabled={loading}>
+                                Cancel
+                            </button>
+                            <button className="popup-btn popup-btn--add" onClick={handleAdd} disabled={loading || !link.trim()}>
+                                {loading ? 'Adding…' : 'Add'}
+                            </button>
+                        </div>
+                    </div>
                 </div>
             )}
         </>
