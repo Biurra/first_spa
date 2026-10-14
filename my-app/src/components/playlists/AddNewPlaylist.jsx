@@ -1,38 +1,52 @@
 import { useState } from 'react';
-import { createPlaylists } from '../../services/createPlaylists.js';
-import { useEffect } from 'react';
-import { supabase } from '../../libraries/supabase.js';
+import { createPlaylists } from '../../../../backend/services/createPlaylists.js';
 
-
-function AddNewPlaylist() {
+function AddNewPlaylist({ onCreated }) {
     const [popUp, setPopUp] = useState(false);
     const [name, setName] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
-    useEffect(() => {
-    supabase.auth.getSession().then(({ data, error }) => {
-        console.log('Session:', data.session);
-        console.log('Auth error:', error);
-        });
-    }, []);
+    function handleOpen() {
+        setError(null);
+        setName('');
+        setPopUp(true);
+    }
+
+    function handleCancel() {
+        setError(null);
+        setName('');
+        setPopUp(false);
+    }
 
     async function handleCreate() {
-        if (!name.trim()) {
-            return;
-        }
+        if (!name.trim()) return;
+
+        setLoading(true);
+        setError(null);
 
         try {
             await createPlaylists(name.trim());
-            setName('')
+            setName('');
             setPopUp(false);
-        } catch (error) {
-            console.error('Failed to create playlist:', error);
+            if (onCreated) onCreated();
+        } catch (err) {
+            console.error('Failed to create playlist:', {
+                message: err?.message,
+                code: err?.code,
+                details: err?.details,
+                hint: err?.hint,
+                full: err,
+            });
+            setError(`${err?.message ?? 'Unknown error'} (code: ${err?.code ?? '?'})`);
+        } finally {
+            setLoading(false);
         }
-        
     }
 
-    return(
+    return (
         <>
-            <button onClick={() => setPopUp(true)}>
+            <button onClick={handleOpen}>
                 + New Playlist
             </button>
 
@@ -45,14 +59,21 @@ function AddNewPlaylist() {
                         placeholder="Playlist name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
+                        disabled={loading}
                     />
 
-                    <button onClick={() => setPopUp(false)}>
+                    {error && (
+                        <p style={{ color: 'red', fontSize: '0.85rem', margin: '4px 0' }}>
+                            ⚠ {error}
+                        </p>
+                    )}
+
+                    <button onClick={handleCancel} disabled={loading}>
                         Cancel
                     </button>
 
-                    <button onClick={handleCreate}>
-                        Create
+                    <button onClick={handleCreate} disabled={loading || !name.trim()}>
+                        {loading ? 'Creating…' : 'Create'}
                     </button>
                 </div>
             )}

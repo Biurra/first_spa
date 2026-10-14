@@ -1,21 +1,29 @@
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-
-function Playlist({name, songs, songCounter, cover, playlistLink}) {
-
+function Playlist({ id, name, songs, cover, onDelete }) {
     return (
-        <div className="playlist-card-content">
+        <Link to={`/playlist/${id}`} className="playlist-card-content">
 
             <img src={cover} alt={name} />
 
             <div className="playlist-info">
-                <a href={playlistLink} target="_blank" rel="noopener noreferrer" className="playlist-name">
-                    {playlistLink}
-                </a>
-                <p> {songs} songs </p>
+                <span className="playlist-name">{name}</span>
+                <p>{songs} songs</p>
             </div>
-        </div>
+
+            <button
+                className="delete-btn"
+                title="Delete playlist"
+                onClick={(e) => {
+                    e.preventDefault(); // stop the Link from navigating
+                    onDelete && onDelete();
+                }}
+            >
+                🗑️
+            </button>
+
+        </Link>
     );
 }
 
-export default Playlist;
+export default Playlist;

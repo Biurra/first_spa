@@ -1,4 +1,4 @@
-import { supabase } from './supabase.js';
+import { supabase } from '../libraries/supabase.js';
 
 export async function getSongs(playlist_id) {
     const { data, error } = await supabase

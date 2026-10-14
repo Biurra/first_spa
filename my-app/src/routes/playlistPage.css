@@ -1,0 +1,231 @@
+.playlist-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+    font-family: 'Inter', sans-serif;
+    color: #e8e8e8;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: #a0a0b0;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.back-link:hover {
+    color: #ffffff;
+}
+
+.page-status {
+    text-align: center;
+    margin-top: 4rem;
+    color: #888;
+    font-size: 1rem;
+}
+
+.playlist-hero {
+    display: flex;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.playlist-hero-thumb {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    flex-shrink: 0;
+}
+
+.playlist-hero-thumb--empty {
+    background: linear-gradient(135deg, #2a2a3e, #1a1a2e);
+    border-radius: 10px;
+}
+
+.playlist-hero-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.playlist-hero-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.playlist-hero-count {
+    font-size: 0.95rem;
+    color: #9090a8;
+    margin: 0 0 0.8rem;
+}
+
+.playlist-hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.empty-msg {
+    text-align: center;
+    color: #666;
+    margin-top: 3rem;
+    font-size: 0.95rem;
+}
+
+.song-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.song-table-head th {
+    padding: 0.4rem 0.75rem;
+    text-align: left;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #6a6a80;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    white-space: nowrap;
+}
+
+.song-row {
+    border-radius: 8px;
+    transition: background 0.15s;
+}
+
+.song-row:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.song-row td {
+    padding: 0.6rem 0.75rem;
+    vertical-align: middle;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.col-index {
+    color: #555;
+    font-size: 0.85rem;
+    width: 2rem;
+    text-align: right;
+}
+
+.col-thumb {
+    width: 48px;
+}
+
+.col-title {
+    max-width: 260px;
+}
+
+.col-artist {
+    max-width: 160px;
+}
+
+.col-icon {
+    width: 2.5rem;
+    text-align: center;
+}
+
+.song-thumb {
+    width: 42px;
+    height: 42px;
+    object-fit: cover;
+    border-radius: 5px;
+    display: block;
+}
+
+.song-name-link {
+    color: #e8e8e8;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: color 0.15s;
+}
+
+.song-name-link:hover {
+    color: #a78bfa;
+}
+
+.song-artist-link {
+    color: #9090a8;
+    text-decoration: none;
+    font-size: 0.85rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    transition: color 0.15s;
+}
+
+.song-artist-link:hover {
+    color: #c4b5fd;
+}
+
+.song-artist-empty {
+    color: #444;
+    font-size: 0.85rem;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 0.25rem;
+    border-radius: 4px;
+    opacity: 0.5;
+    transition: opacity 0.15s, transform 0.1s;
+    line-height: 1;
+}
+
+.icon-btn:hover {
+    opacity: 1;
+    transform: scale(1.15);
+}
+
+.heart-btn {
+    color: #e06c75;
+}
+
+.heart-btn.active {
+    opacity: 1;
+}
+
+.practice-checkbox {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    accent-color: #a78bfa;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.25rem;
+    border-radius: 4px;
+    opacity: 0.35;
+    transition: opacity 0.15s, transform 0.1s;
+}
+
+.delete-btn:hover {
+    opacity: 1;
+    transform: scale(1.15);
+}
