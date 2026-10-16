@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { createPlaylists } from '../../../../backend/services/createPlaylists.js';
+import { createPlaylists } from '../../services/playlists.js';
 
 function AddNewPlaylist({ onCreated }) {
     const [popUp, setPopUp] = useState(false);

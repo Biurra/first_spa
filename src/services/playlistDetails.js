@@ -1,13 +1,16 @@
-import { getSongs } from '../../../backend/services/getSongs.js';
-import { getPlaylists } from '../../../backend/services/getPlaylists.js';
+import { getPlaylistSongs as fetchPlaylistSongs } from './songs.js';
+import { getPlaylistById as fetchPlaylistById, getPlaylists } from './playlists.js';
 
-// Tiro: { id, name, artist, thumbnail, link, favorite, must_practice }
+// Returns array of songs: { id, name, artist, thumbnail, link, favorite, must_practice }
 export async function getPlaylistSongs(playlistId) {
-    const rows = await getSongs(playlistId);
-    return rows.map(row => row.songs);
+  return fetchPlaylistSongs(playlistId);
 }
 
 export async function getPlaylistById(playlistId) {
+  try {
+    return await fetchPlaylistById(playlistId);
+  } catch {
     const all = await getPlaylists();
-    return all.find(p => p.id === Number(playlistId)) ?? null;
+    return all.find((p) => String(p.id) === String(playlistId)) ?? null;
+  }
 }

@@ -6,8 +6,7 @@ import Playlist from '../../components/playlists/Playlists.jsx';
 import assets from '../../components/utils/imgFetching.jsx';
 import samples from '../../components/utils/mp3Fetching.jsx';
 import AddNewPlaylist from '../../components/playlists/AddNewPlaylist.jsx';
-import { getPlaylists } from '../../services/getPlaylists.jsx';
-import { delPlaylists } from '../../../../backend/services/delPlaylists.js';
+import { getPlaylists, delPlaylists } from '../../services/playlists.js';
 
 function Body() {
     const [playlists, setPlaylists] = useState([]);

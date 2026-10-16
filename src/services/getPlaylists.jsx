@@ -1,7 +1,8 @@
-import { getPlaylists as _getPlaylists } from '../../../backend/services/getPlaylists.js';
+import { getPlaylists as fetchPlaylists, createPlaylists, delPlaylists, namePlaylists } from './playlists.js';
 
 export async function getPlaylists() {
-    return _getPlaylists();
+  return fetchPlaylists();
 }
 
-export default getPlaylists;
+export { createPlaylists, delPlaylists, namePlaylists };
+export default getPlaylists;

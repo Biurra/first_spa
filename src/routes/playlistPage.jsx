@@ -2,9 +2,8 @@ import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { getPlaylistSongs, getPlaylistById } from '../services/playlistDetails.js';
 import AddNewSong from '../components/songs/AddNewSong.jsx';
-import { removeSongFromPlaylist } from '../../../backend/services/removeSong.js';
-import { delPlaylists } from '../../../backend/services/delPlaylists.js';
-import { updateSongField } from '../../../backend/services/updateSong.js';
+import { removeSongFromPlaylist, updateSongField } from '../services/songs.js';
+import { delPlaylists } from '../services/playlists.js';
 import './playlistPage.css';
 
 export default function PlaylistPage() {

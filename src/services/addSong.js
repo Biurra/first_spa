@@ -1,10 +1,8 @@
-import { getSongInfo } from './ytmusicapi.js';
-import { addSongs } from '../../../backend/services/addSongs.js';
+import { addSongToPlaylist } from './songs.js';
 
 export async function addSongFromLink(link, playlist) {
-    const songInfo = await getSongInfo(link);
-    // Lo que recibo: songInfo = { videoId, title, artist, thumbnail, duration }
-    // Lo que devuelvo: songInfo = { videoId, title, link, thumbnail, artist }
-    const song = await addSongs(link, songInfo, playlist);
-    return song;
+  const result = await addSongToPlaylist(playlist, link);
+  return result?.song || result;
 }
+
+export default addSongFromLink;
