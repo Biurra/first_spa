@@ -1,6 +1,10 @@
-export const API_BASE =
+const rawBase =
   import.meta.env.VITE_BACKEND_URL ||
-  (typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.hostname}:3001` : 'http://localhost:3001');
+  (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+    ? 'http://localhost:3001'
+    : 'https://firstspabackend.netlify.app');
+
+export const API_BASE = (rawBase || '').replace(/\/+$/, '');
 
 export async function apiFetch(endpoint, options = {}) {
   const url = `${API_BASE}${endpoint}`;
