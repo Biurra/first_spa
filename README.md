@@ -1,16 +1,19 @@
-# React + Vite
+# Kaguyitalists
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+This is a small project made to practice and learn more about frontend development. 
 
-Currently, two official plugins are available:
+## This project is still in active development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+# About
 
-## React Compiler
+It's a simple page, hosted at kaguyitalists.netlify.app, designed so you can make your own playlists from Youtube Music links, to keep track of which songs you got to practice. I made it thinking about my own issues keeping track of what records I was practicing before retuning my guitar, which I do quite often. 
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Usage
 
-## Expanding the Oxlint configuration
+At the moment, I do not recommend to use the web app seriously, since it lacks unique-user features, such as a simple signup and login. 
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+
+
+
+
+
